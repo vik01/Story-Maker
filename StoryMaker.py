@@ -50,7 +50,7 @@ class StoryMaker:
 
         # make sure some values are set.
         self.temp = 1
-        self.max_tokens = 1000
+        self.max_tokens = 10000
         self.stream_result = False
         self.__preserve_convo = []
 
@@ -241,17 +241,21 @@ class StoryMaker:
 
     def close(self):
         """Explicitly closes the underlying HTTP client and releases its connections.
+        Clears preserved conversation with model to clear unused space.
 
         Does nothing if the client was never created.
         """
         if hasattr(self, 'client'):
             self.client.close()
+        self.__preserve_convo.clear()
     
 
     def __del__(self):
-        """Safety net to close the HTTP client when the object is garbage collected."""
+        """Safety net to close the HTTP client when the object is garbage collected.
+        Clears preserved conversation with model to clear unused space."""
         if hasattr(self, 'client'):
             self.client.close()
+        self.__preserve_convo.clear()
 
 
     def __enter__(self):
@@ -260,24 +264,14 @@ class StoryMaker:
 
 
     def __exit__(self, _exc_type, _exc_val, _exc_tb):
-        """Closes the HTTP client when exiting a context manager block.
+        """Closes the HTTP client when exiting a context manager block. 
+        Clears preserved conversation with model to clear unused space.
 
         Does nothing if the client was never created.
         """
         if hasattr(self, 'client'):
             self.client.close()
-
-
-    @classmethod
-    def create_story_prompt(cls, 
-                            setting:str="A fantasy lands with humans, dwarves, elves, dragons, and magic. Similar to LOTR, GOT, and more.",
-                            theme:str="A triamph of good over evil",
-                            pov:str="third person narrator", 
-                            conflict:str="",
-                            **kwargs):
-        message = [{"role": "system", "content": cls.init_sys_prompt}, {"role": "user","content": ""}]
-        cls.__chat()
-        pass
+        self.__preserve_convo.clear()
 
 
     @classmethod
