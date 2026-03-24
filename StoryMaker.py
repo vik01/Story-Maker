@@ -54,13 +54,13 @@ class StoryMaker:
 
         if system_prompt == "":
             self.__preserve_convo.append({
-                    "role": "system", 
+                    "role": "system",
                     "content": self.init_sys_prompt
                 }
             )
         else:
             self.__preserve_convo.append({
-                    "role": "system", 
+                    "role": "system",
                     "content": system_prompt
                 }
             )

@@ -1,5 +1,5 @@
 [project]
-name = "project"
+name = "StoryMaker"
 version = "0.1.0"
 description = "StoryMaker: Run wild with you ideas! The StoryMaker project is about using AI to build out short stories of different types ranging from fantasy to sci-fi to even more! I use OpenRouter to query the Arcee AI free model that is excellent at creative writing, story-telling, and much more!"
 readme = "README.md"

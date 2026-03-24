@@ -127,11 +127,6 @@ All dependencies are managed via `pyproject.toml` and installed with `uv sync`.
 | `python-dotenv` | >=1.2.1 | Loads the API key from the `.env` file |
 | `streamlit` | >=1.30 | Web app framework for the interactive story browser |
 | `Pillow` | >=10.0.0 | Loads and displays story poster images |
-| `requests` | >=2.32.5 | HTTP utilities |
-| `pandas` | >=2.2.0, <3.14.3 | Data handling |
-| `numpy` | >=2.4.2 | Numerical utilities |
-| `matplotlib` | >=3.10.8 | Plotting utilities |
-| `seaborn` | >=0.13.2 | Statistical visualisation |
 
 ---
 
